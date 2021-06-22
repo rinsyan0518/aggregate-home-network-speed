@@ -2,9 +2,21 @@
 
 # スプレッドシートに保存
 
+[clasp](https://github.com/google/clasp) を使用するため、初期設定はしてください。
+
+## セットアップ
+
+`.clasp.json` を作成や、GAS のプロジェクトを生成するために以下を実行します。（試してない）
+
+```bash
+make setup
+```
+
 ## 設定
 
-`make push` を実行する前に以下を必ず行ってください。2021/06/22 時点では `clasp deploy`しても webapp として公開されない。
+`make push` を実行する前に以下を必ず行ってください。
+
+（2021/06/22 時点では `clasp deploy`しても webapp として公開されない。）
 
 ### Web アプリケーションとしてデプロイ
 
