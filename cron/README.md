@@ -14,12 +14,13 @@ $ make setup
 
 ### cron の設定
 
-30 分毎にスクリプトが実行されるようにする（時間はお好きなタイミングで）
+毎事 36 分毎にスクリプトが実行されるようにする（時間はお好きなタイミングで）
 
 ```
+# piユーザーで行う
 $ crontab -e
 
-*/30 * * * * /home/pi/aggregate-home-network-speed/cron/speedtest.sh
+36 * * * * /home/pi/aggregate-home-network-speed/cron/speedtest.sh > /home/pi/myjob.log 2>&1
 ```
 
 ## 備考
