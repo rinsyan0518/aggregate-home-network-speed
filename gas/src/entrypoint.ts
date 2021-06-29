@@ -1,10 +1,10 @@
-const HEADERS = ["server name", "server id", "latency", "jitter", "packet loss", "download", "upload", "download bytes", "upload bytes", "share url"]
+const HEADERS = ["created at", "server name", "server id", "latency", "jitter", "packet loss", "download", "upload", "download bytes", "upload bytes", "share url"]
 
 function doPost(e: GoogleAppsScript.Events.DoPost) {
   Logger.log(JSON.stringify(e))
   if (e.postData.type !== 'text/csv') return
   const data = e.postData.contents.split(',')
-  if (data.length !== HEADERS.length) return false
+  if (data.length !== (HEADERS.length - 1)) return false
   initializeCsvHeader()
   const result = appendData(data)
   Logger.log(result)
@@ -20,6 +20,6 @@ function initializeCsvHeader() {
 function appendData(data: string[]) {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   const stripped = data.map((v) => v.replace(/^\"*|\"*$/g, ""))
-  sheet.appendRow(stripped)
+  sheet.appendRow([new Date(), ...stripped])
   return true
 }
